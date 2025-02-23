@@ -1,0 +1,54 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="">Заметки</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'home' %}">Дом</a>
+                <a href="{% url 'manicure' %}">Маникюр</a>
+                <a href="#">{{ user }}</a>
+                <a href="{% url 'logout' %}">Выход</a>
+            {% else %}
+                <a href="">Регистрация</a>
+                <a href="">Вход</a>
+            {% endif %}
+        </nav>
+    </header>
+    {% if messages %}
+        <div id="popup">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+
+    {% endif %}
+    <div class="container">
+
+        {% block mainmenu %}
+        {% endblock mainmenu %}
+        <main class="content">
+
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+    <footer>
+        &copy; 2024 Ваш сайт. Все права защищены. Автор: Масалыка В.Н.
+    </footer>
+
+
+
+</body>
+</html>
