@@ -1,0 +1,72 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>
+        {% block title %}
+
+        {% endblock %}
+    </title>
+    <link type="text/css" href="{% static '/css/main.css' %}" rel="stylesheet" />
+</head>
+<body>
+
+    <header>
+        <nav>
+            <a href="{% url 'notes-index' %}">Заметки</a>
+            {% if user.is_authenticated %}
+                <a href="{% url 'home' %}">Дом</a>
+                <a href="{% url 'manicure' %}">Маникюр</a>
+                <a href="#">{{ user }}</a>
+                <a href="{% url 'logout' %}">Выход</a>
+            {% else %}
+                <a href="{% url 'register' %}">Регистрация</a>
+                <a href="{% url 'login' %}">Вход</a>
+            {% endif %}
+        </nav>
+    </header>
+    {% if messages %}
+        <div id="popup">
+            {% for message in messages %}
+                {{ message }}
+            {% endfor %}
+        </div>
+
+        <script>
+                const popup = document.getElementById('popup');
+                popup.style.display = 'block'; // Показываем попап
+                popup.style.visibility = 'visible'; // Делаем его видимым
+                popup.style.opacity = '1'; // Устанавливаем полную непрозрачность
+
+                // Через 3 секунды начинаем исчезновение
+                setTimeout(() => {
+                    popup.style.opacity = '0'; // Уменьшаем непрозрачность до 0
+                    popup.style.visibility = 'hidden'; // Скрываем попап
+
+                    // Убираем попап из потока документа
+                    setTimeout(() => {
+                        popup.style.display = 'none'; // Делаем его невидимым после анимации
+                    }, 1000); // Это время должно совпадать с time в CSS (1s)
+                }, 3000); // Попап будет виден 3 секунды
+        </script>
+    {% endif %}
+    <div class="container">
+
+        {% block mainmenu %}
+        {% endblock mainmenu %}
+        <main class="content">
+
+            {% block content %}
+            {% endblock %}
+        </main>
+    </div>
+    <footer>
+        &copy; 2024 Ваш сайт. Все права защищены. Автор: Масалыка В.Н.
+    </footer>
+
+
+
+</body>
+</html>
