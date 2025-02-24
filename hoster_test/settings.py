@@ -122,6 +122,7 @@ USE_TZ = True
 
 STATIC_URL = '/test_host/static/'
 STATIC_ROOT = '/home/mydatahubs/public_html/test_host/static/' 
+STATICFILES_DIRS  = [BASE_DIR / "static_source"]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.2/ref/settings/#default-auto-field
