@@ -78,7 +78,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'mydatahubs_test_data',
-        'USER': 'DB_USER',
+        'USER': 'mydatahubs_user',
         'PASSWORD': '56LzLLqoJdk+',
         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
