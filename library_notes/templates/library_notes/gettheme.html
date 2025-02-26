@@ -1,0 +1,14 @@
+{% extends 'library_notes/index.html' %}
+ 
+{% block theme %} 
+<h1>{{ theme.name }}</h1>
+{% for content in contents %}
+    <div class="room">
+        <div class="note">
+            <a href="{% url 'get-content' content.pk %}"> {{ content.name }} </a>
+            часть текста
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}

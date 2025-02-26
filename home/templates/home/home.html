@@ -1,0 +1,17 @@
+{% extends 'home/index.html' %}
+
+{% block theme %}
+
+<div class="main">
+    {% for dev in device %}
+
+        <div class="room">
+            <h3>{{ dev }}</h3>
+            
+            {% for sensor in dev.sensors %}
+                <div class="sensor">{{ sensor.name  }}: {{ sensor.values.value }} {{ sensor.unit }}</div>
+            {% endfor %}
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}

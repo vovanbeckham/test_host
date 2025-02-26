@@ -1,8 +1,8 @@
 """
-URL configuration for hoster_test project.
+URL configuration for core project.
 
 The `urlpatterns` list routes URLs to views. For more information please see:
-    https://docs.djangoproject.com/en/4.2/topics/http/urls/
+    https://docs.djangoproject.com/en/5.0/topics/http/urls/
 Examples:
 Function views
     1. Add an import:  from my_app import views
@@ -16,8 +16,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', include('note.urls')),
+    path('manicure/', include('manicure.urls')),
+    path('home/', include('home.urls')),
+    path('', include('library_notes.urls')),
+    path('user/', include('users.urls')),
+    path('expenses/', include('expenses.urls')),
+]
+
+urlpatterns += [
+    path("ckeditor5/", include('django_ckeditor_5.urls')),
 ]
